@@ -23,5 +23,18 @@ void ABattleBlasterGameMode::BeginPlay()
 			UE_LOG(LogTemp, Display, TEXT("Cast Failed!"));
 		}
 	}
-	
+	int32 i = 0;
+	while (i < TowerCount)
+	{
+		if (Towers[i])
+		{
+			ATower* TowerPawn = Cast<ATower>(Towers[i]);
+			if (TowerPawn && Tank)
+			{
+				TowerPawn->Tank = Tank;
+				UE_LOG(LogTemp, Display, TEXT("%s: setting the Tank"), *TowerPawn->GetActorNameOrLabel());
+			}
+		}
+		i++;
+	}
 }
