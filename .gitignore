@@ -1,0 +1,70 @@
+# --- Unreal Engine 5 typical ignore rules ---
+
+# Compiled object files
+Binaries/
+DerivedDataCache/
+Intermediate/
+Saved/
+
+# Editor and local user files
+.vs/
+.idea/
+.vscode/
+*.VC.db
+*.sln
+*.suo
+*.opensdf
+*.opendb
+*.log
+*.tlog
+
+# Backup files
+*.tmp
+*.bak
+*.swp
+*.scc
+*.old
+
+# Build output
+Build/*
+!Build/Configuration/
+
+# Platform-specific folders
+WindowsNoEditor/
+Windows/
+Linux/
+Mac/
+
+# Asset backups
+*_BuiltData.uasset
+
+# Optional: ignore auto-generated config (keep only source-controlled)
+Config/DefaultEditorPerProjectUserSettings.ini
+Config/DefaultEditorUserSettings.ini
+
+# Ignore any temporary or cache folders in plugins
+Plugins/*/Intermediate/
+Plugins/*/Binaries/
+Plugins/*/Saved/
+Plugins/*/DerivedDataCache/
+
+# Optional: ignore specific large file types (if not needed)
+*.uasset
+*.umap
+*.dds
+*.png
+*.jpg
+*.tga
+*.wav
+*.mp3
+*.mp4
+*.mov
+*.zip
+*.rar
+*.7z
+*.fbx
+*.blend
+*.max
+*.obj
+*.psd
+*.exr
