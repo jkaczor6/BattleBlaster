@@ -40,7 +40,9 @@ public:
 	UPROPERTY(EditAnywhere, Category = "Input")
 	UInputAction* MoveAction;
 	UPROPERTY(EditAnywhere, Category = "Input")
-	UInputAction* TurnAction;
+	UInputAction* TurnAction;;
+	UPROPERTY(EditAnywhere, Category = "Input")
+	UInputAction* FireAction;
 
 	UPROPERTY(VisibleAnywhere)
 	USpringArmComponent* SpringArmComp;
