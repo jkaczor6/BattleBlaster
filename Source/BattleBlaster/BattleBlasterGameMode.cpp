@@ -38,6 +38,28 @@ void ABattleBlasterGameMode::BeginPlay()
 		}
 		i++;
 	}
+
+	CountdownSeconds = CountdownDelay;
+	GetWorldTimerManager().SetTimer(CountdownHandle, this, &ABattleBlasterGameMode::OnCountdownTimerTimeout, 1.0f, true);
+}
+
+void ABattleBlasterGameMode::OnCountdownTimerTimeout()
+{
+	CountdownSeconds--;
+	if (CountdownSeconds > 0)
+	{
+		UE_LOG(LogTemp, Display, TEXT("Countdown: %d"), CountdownSeconds);
+	}
+	else if (CountdownSeconds == 0)
+	{
+		Tank->SetPlayerEnabled(true);
+		UE_LOG(LogTemp, Display, TEXT("GO!"));
+	}
+	else
+	{
+		GetWorldTimerManager().ClearTimer(CountdownHandle);
+		UE_LOG(LogTemp, Display, TEXT("Timer cleared"));
+	}
 }
 
 void ABattleBlasterGameMode::ActorDied(AActor* DeadActor)
@@ -67,8 +89,6 @@ void ABattleBlasterGameMode::ActorDied(AActor* DeadActor)
 	if (IsGameOver)
 	{
 		FString GameOverString = IsVictory ? "Victory!" : "Defeat!";
-
-		UE_LOG(LogTemp, Display, TEXT("Game over: %s"), *GameOverString);
 
 		FTimerHandle GameOverTimer;
 		GetWorldTimerManager().SetTimer(GameOverTimer, this, &ABattleBlasterGameMode::OnGameOverTimerTimeout, GameOverDelay, false);
