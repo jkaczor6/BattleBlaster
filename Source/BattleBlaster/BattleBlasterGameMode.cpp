@@ -43,15 +43,14 @@ void ABattleBlasterGameMode::ActorDied(AActor* DeadActor)
 {
 	if (DeadActor == Tank)
 	{
-		UE_LOG(LogTemp, Display, TEXT("Tank died, You lose!"));
+		Tank->HandleDestruction();
 	}
 	else
 	{
 		ATower* DeadTower = Cast<ATower>(DeadActor);
 		if (DeadTower)
 		{
-			UE_LOG(LogTemp, Display, TEXT("Tower died, GJ!"));
-			DeadTower->Destroy();
+			DeadTower->HandleDestruction();
 			TowerCount--;
 			if (TowerCount == 0)
 			{

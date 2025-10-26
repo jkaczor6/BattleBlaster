@@ -58,4 +58,5 @@ public:
 
 	void MoveInput(const FInputActionValue& Value);
 	void TurnInput(const FInputActionValue& Value);
+	void HandleDestruction();
 };
