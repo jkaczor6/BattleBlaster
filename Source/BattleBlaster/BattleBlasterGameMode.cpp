@@ -44,10 +44,16 @@ void ABattleBlasterGameMode::BeginPlay()
 	if (PlayerController)
 	{
 		ScreenMessageWidget = CreateWidget<UScreenMessage>(PlayerController, ScreenMessageClass);
+		TowersCounterWidget = CreateWidget<UTowersCounter>(PlayerController, TowersCounterClass);
 		if (ScreenMessageWidget)
 		{
 			ScreenMessageWidget->AddToPlayerScreen();
 			ScreenMessageWidget->SetMessageText("Get Ready!");
+		}
+		if (TowersCounterWidget)
+		{
+			TowersCounterWidget->AddToPlayerScreen();
+			TowersCounterWidget->SetTowersText(FString::Printf(TEXT("Towers left: %d"), TowerCount));
 		}
 	}
 
@@ -90,6 +96,7 @@ void ABattleBlasterGameMode::ActorDied(AActor* DeadActor)
 		{
 			DeadTower->HandleDestruction();
 			TowerCount--;
+			TowersCounterWidget->SetTowersText(FString::Printf(TEXT("Towers left: %d"), TowerCount));
 			if (TowerCount == 0)
 			{
 				IsGameOver = true;

@@ -6,6 +6,7 @@
 #include "GameFramework/GameModeBase.h"
 #include "Tank.h"
 #include "ScreenMessage.h"
+#include "TowersCounter.h"
 #include "BattleBlasterGameMode.generated.h"
 
 /**
@@ -25,6 +26,10 @@ public:
 	TSubclassOf<UScreenMessage> ScreenMessageClass;
 
 	UScreenMessage* ScreenMessageWidget;
+	UPROPERTY(EditAnywhere)
+	TSubclassOf<UTowersCounter> TowersCounterClass;
+
+	UTowersCounter* TowersCounterWidget;
 
 	ATank* Tank;
 	int32 TowerCount;
