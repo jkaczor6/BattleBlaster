@@ -6,6 +6,8 @@
 #include "GameFramework/Actor.h"
 #include "GameFramework/ProjectileMovementComponent.h"
 #include "Kismet/GameplayStatics.h"
+#include "NiagaraComponent.h"
+#include "NiagaraFunctionLibrary.h"
 #include "Projectile.generated.h"
 
 UCLASS()
@@ -30,6 +32,12 @@ public:
 
 	UPROPERTY(VisibleAnywhere)
 	UProjectileMovementComponent* ProjectileMovemenetComponent;
+	
+	UPROPERTY(VisibleAnywhere)
+	UNiagaraComponent* TrailParticles;
+
+	UPROPERTY(EditAnywhere)
+	UNiagaraSystem* HitParticles;
 
 	UPROPERTY(EditAnywhere)
 	float Damage = 20.0f;
